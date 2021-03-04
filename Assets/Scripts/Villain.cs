@@ -43,6 +43,7 @@ public class Villain : MonoBehaviour
                     newWP = Random.Range(0, wayPoints.Count);
 
                 currentWayPoint = newWP;
+                print(currentWayPoint);
                 agent.SetDestination(wayPoints[currentWayPoint]);
             }
         }

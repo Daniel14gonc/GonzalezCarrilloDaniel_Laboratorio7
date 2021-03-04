@@ -24,11 +24,11 @@ public class Movement : MonoBehaviour
         Ray myRay = Camera.main.ScreenPointToRay(pos);
         if(Physics.Raycast(myRay, out rayInfo) && Input.GetMouseButton(0))
         {
-            agent.SetDestination(rayInfo.point);
+            NavMeshHit nmHit;
+            if(NavMesh.SamplePosition(rayInfo.point, out nmHit, 2, NavMesh.AllAreas))
+                agent.SetDestination(nmHit.position);
         }
         animator.SetFloat("Velocity", Mathf.Abs(agent.velocity.x));
-
-
     }
 
     private void OnCollisionEnter(Collision collision)
